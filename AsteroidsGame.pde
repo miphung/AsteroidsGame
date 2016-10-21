@@ -14,15 +14,27 @@ class SpaceShip extends Floater
     corners = 4;
     xCorners = new int[corners];
     yCorners = new int[corners];
+    //top left
     xCorners[0] = 250;
-    yCorners[0] = 250;
+    yCorners[0] = 238;
+    //the point er nose
     xCorners[1] = 274;
     yCorners[1] = 258;
-    xCorners[2] = 250;
-    yCorners[2] = 266;
+    //bottom left
+    xCorners[2] = 240;
+    yCorners[2] = 265;
+    //the part that goes in 
     xCorners[3] = 256;
-    yCorners[3] = 250;
-}
+    yCorners[3] = 252;
+  }
+  public void keyTyped()
+  {
+    if (key == s)
+    {
+      yup.accelerate(2);
+    }
+    if (key )
+  }
   public void setX(int x){myCenterX=x;};
   public int getX(){return (int)myCenterX;}   
   public void setY(int y){myCenterY=y;}   
@@ -110,6 +122,11 @@ abstract class Floater //Do NOT modify the Floater class! Make changes in the Sp
       vertex(xRotatedTranslated,yRotatedTranslated);    
     }   
     endShape(CLOSE);  
-  }   
-} 
+  }
+  public void keyPressed()
+  {
+
+  }  
+
+}
 
