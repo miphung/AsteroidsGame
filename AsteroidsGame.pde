@@ -7,6 +7,12 @@ public void draw()
 {
   yup.show();
 }
+  public void keyPressed()
+  {
+    if (key == 'a')
+      yup.rotate (-10);
+  }  
+
 class SpaceShip extends Floater  
 {  
   public SpaceShip()
@@ -15,25 +21,17 @@ class SpaceShip extends Floater
     xCorners = new int[corners];
     yCorners = new int[corners];
     //top left
-    xCorners[0] = 250;
-    yCorners[0] = 238;
+    xCorners[0] = 6;
+    yCorners[0] = 0;
     //the point er nose
-    xCorners[1] = 274;
-    yCorners[1] = 258;
+    xCorners[1] = -8;
+    yCorners[1] = 7;
     //bottom left
     xCorners[2] = 240;
     yCorners[2] = 265;
     //the part that goes in 
     xCorners[3] = 256;
     yCorners[3] = 252;
-  }
-  public void keyTyped()
-  {
-    if (key == s)
-    {
-      yup.accelerate(2);
-    }
-    if (key )
   }
   public void setX(int x){myCenterX=x;};
   public int getX(){return (int)myCenterX;}   
@@ -123,10 +121,6 @@ abstract class Floater //Do NOT modify the Floater class! Make changes in the Sp
     }   
     endShape(CLOSE);  
   }
-  public void keyPressed()
-  {
-
-  }  
 
 }
 
