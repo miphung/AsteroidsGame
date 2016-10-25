@@ -2,16 +2,22 @@ SpaceShip yup = new SpaceShip();
 public void setup() 
 {
   size(500,500);
+  
 }
 public void draw() 
 {
+  background(0);
   yup.show();
 }
   public void keyPressed()
   {
     if (key == 'a')
       yup.rotate (-10);
-  }  
+    if (key == 'd')
+      yup.rotate (10);
+    if (key == 's')
+      yup.accelerate(15);
+  }
 
 class SpaceShip extends Floater  
 {  
@@ -20,18 +26,25 @@ class SpaceShip extends Floater
     corners = 4;
     xCorners = new int[corners];
     yCorners = new int[corners];
-    //top left
-    xCorners[0] = 6;
+    //nose
+    xCorners[0] = 8;
     yCorners[0] = 0;
-    //the point er nose
-    xCorners[1] = -8;
+    //bottom point
+    xCorners[1] = -6;
     yCorners[1] = 7;
-    //bottom left
-    xCorners[2] = 240;
-    yCorners[2] = 265;
+    //top point
+    xCorners[2] = -6;
+    yCorners[2] = -7;
     //the part that goes in 
-    xCorners[3] = 256;
-    yCorners[3] = 252;
+    xCorners[3] = -2;
+    yCorners[3] = 0;
+
+    myCenterX=250;
+    myCenterY=250;
+    myPointDirection = 248;
+    myDirectionX = 0;
+    myDirectionY = 0;
+    myColor = 255;
   }
   public void setX(int x){myCenterX=x;};
   public int getX(){return (int)myCenterX;}   
