@@ -1,13 +1,20 @@
 SpaceShip yup = new SpaceShip();
+Star sky[] = new Star[200];
 public void setup() 
 {
   size(500,500);
-  
+  for(int i=0; i < sky.length;i++)
+  {
+    sky[i] = new Star();
+  }
 }
 public void draw() 
 {
-  background(0);
+  background( 255,182,193);
   yup.show();
+  yup.move();
+  for (int i = 0; i < sky.length; i++)
+    sky[i].show();
 }
   public void keyPressed()
   {
@@ -16,8 +23,30 @@ public void draw()
     if (key == 'd')
       yup.rotate (10);
     if (key == 's')
-      yup.accelerate(15);
+      yup.accelerate(0.1);
+    if (key == 'q')
+    {
+      yup.setX((int)(Math.random()*500));
+      yup.setY((int)(Math.random()*500));
+      yup.setDirectionX (0);
+      yup.setDirectionY (0);
+    }
   }
+class Star
+{
+  private int myX , myY;
+  public Star()
+  {
+    myX = (int)(Math.random()*500);
+    myY = (int)(Math.random()*500);
+  }
+  public void show()
+  {
+    fill( 255,245,238);
+    noStroke();
+    ellipse(myX, myY, 3, 3);
+  }
+}
 
 class SpaceShip extends Floater  
 {  
@@ -83,7 +112,7 @@ abstract class Floater //Do NOT modify the Floater class! Make changes in the Sp
   public void accelerate (double dAmount)   
   {          
     //convert the current direction the floater is pointing to radians    
-    double dRadians =myPointDirection*(Math.PI/180);     
+    double dRadians = myPointDirection*(Math.PI/180);     
     //change coordinates of direction of travel    
     myDirectionX += ((dAmount) * Math.cos(dRadians));    
     myDirectionY += ((dAmount) * Math.sin(dRadians));       
@@ -120,7 +149,7 @@ abstract class Floater //Do NOT modify the Floater class! Make changes in the Sp
   public void show ()  //Draws the floater at the current position  
   {             
     fill(myColor);   
-    stroke(myColor);    
+    stroke(0);    
     //convert degrees to radians for sin and cos         
     double dRadians = myPointDirection*(Math.PI/180);                 
     int xRotatedTranslated, yRotatedTranslated;    
