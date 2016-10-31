@@ -85,9 +85,61 @@ class SpaceShip extends Floater
   public double getDirectionY(){return myDirectionY;}   
   public void setPointDirection(int degrees){myPointDirection=degrees;}   
   public double getPointDirection(){return myPointDirection;} 
-    
 }
- 
+
+class Asteroid extends Floater
+{
+  private int rotSpeed;
+  public Asteroid()
+  {
+    if (Math.random() < 0.5)
+    {
+      rotSpeed = (int)(Math.random()*-1);
+    } 
+    else if () {
+      rotSpeed = (int)(Math.random())
+    }
+    corners = 5;
+    xCorners = new int[corners];
+    yCorners = new int[corners];
+    xCorners[0] = 8;
+    yCorners[0] = 0;
+    xCorners[1] = -6;
+    yCorners[1] = 7;
+    xCorners[2] = -6;
+    yCorners[2] = -7;
+    xCorners[3] = -2;
+    yCorners[3] = 0;
+    xCorners[4] = 2;
+    yCorners[4] = 3;
+    myCenterX=250;
+    myCenterY=250;
+    myPointDirection = 248;
+    myDirectionX = 0;
+    myDirectionY = 0;
+    myColor = 255;
+  }
+  public void setX(int x){myCenterX=x;};
+  public int getX(){return (int)myCenterX;}   
+  public void setY(int y){myCenterY=y;}   
+  public int getY(){return (int)myCenterY;}   
+  public void setDirectionX(double x){myDirectionX = x;}
+  public double getDirectionX(){return myDirectionX;}   
+  public void setDirectionY(double y){myDirectionY = y;}   
+  public double getDirectionY(){return myDirectionY;}   
+  public void setPointDirection(int degrees){myPointDirection=degrees;}   
+  public double getPointDirection(){return myPointDirection;} 
+  
+  public void move()
+  {
+
+  }
+  public void show()
+  {
+
+  }
+} 
+
 abstract class Floater //Do NOT modify the Floater class! Make changes in the SpaceShip class 
 {   
   protected int corners;  //the number of corners, a triangular floater has 3   
