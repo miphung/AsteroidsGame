@@ -21,7 +21,12 @@ public void draw()
   for (int i = 0; i < sky.length; i++)
     sky[i].show();
   for(int x = 0; x < ast.length; x++)
+  {
     ast[x].show();
+    ast[x].move();
+    ast[x].rotate(1);    
+  }
+
 }
   public void keyPressed()
   {
@@ -132,18 +137,18 @@ class Asteroid extends Floater
     myDirectionY = 0;
     myColor = 255;
   }
-
-  public void move()
-  {                                                                                                                                                                    
-    rotate (rotSpeed);
-    super.move();
-  }
   public void show()
   {
     super.show();
     fill(160,160,160);
     noStroke();
   }
+  public void move()
+  {                                                                                                                                                                    
+    rotate (rotSpeed);
+    super.move();
+  }
+
 
 } 
 
