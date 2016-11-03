@@ -8,23 +8,24 @@ public void setup()
   {
     sky[i] = new Star();
   }
-  for(int x =0; x<ast.length; x++)
+  for(int i =0; i<ast.length; i++)
   {
-    ast[x] = new Asteroid();
+    ast[i] = new Asteroid();
   }
 }
 public void draw() 
 {
   background( 255,182,193);
+    for (int i = 0; i < sky.length; i++)
+    sky[i].show();
   yup.show();
   yup.move();
-  for (int i = 0; i < sky.length; i++)
-    sky[i].show();
-  for(int x = 0; x < ast.length; x++)
+
+  for(int i = 0; i < ast.length; i++)
   {
-    ast[x].show();
-    ast[x].move();
-    ast[x].rotate(1);    
+    ast[i].show();
+    ast[i].move();
+
   }
 
 }
@@ -71,13 +72,13 @@ class SpaceShip extends Floater
     xCorners[0] = 8;
     yCorners[0] = 0;
     //bottom point
-    xCorners[1] = -6;
-    yCorners[1] = 7;
+    xCorners[1] = -8;
+    yCorners[1] = 10;
     //top point
-    xCorners[2] = -6;
-    yCorners[2] = -7;
+    xCorners[2] = -8;
+    yCorners[2] = -10;
     //the part that goes in 
-    xCorners[3] = -2;
+    xCorners[3] = -4;
     yCorners[3] = 0;
 
     myCenterX=250;
@@ -101,7 +102,7 @@ class SpaceShip extends Floater
 
 class Asteroid extends Floater
 {
-  private int rotSpeed;
+  private double rotSpeed;
   public void setX(int x){myCenterX=x;};
   public int getX(){return (int)myCenterX;}   
   public void setY(int y){myCenterY=y;}   
@@ -133,19 +134,19 @@ class Asteroid extends Floater
     myCenterX=(int)(Math.random()*500);
     myCenterY=(int)(Math.random()*500);
     myPointDirection = 0;
-    myDirectionX = 0;
-    myDirectionY = 0;
-    myColor = 255;
+    myDirectionX = (Math.random()*8)-4;
+    myDirectionY = (Math.random()*8)-4;
+    myColor = color(160,160,160);
+    rotSpeed = Math.random()*2;
   }
   public void show()
   {
     super.show();
-    fill(160,160,160);
     noStroke();
   }
   public void move()
   {                                                                                                                                                                    
-    rotate (rotSpeed);
+    rotate ((int)rotSpeed);
     super.move();
   }
 
