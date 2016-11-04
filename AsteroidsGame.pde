@@ -1,6 +1,6 @@
 SpaceShip yup = new SpaceShip();
 Star sky[] = new Star[200];
-Asteroid ast[] = new Asteroid[20];
+Asteroid ast[] = new Asteroid[10];
 public void setup() 
 {
   size(500,500);
@@ -43,6 +43,7 @@ public void draw()
       yup.setY((int)(Math.random()*500));
       yup.setDirectionX (0);
       yup.setDirectionY (0);
+      yup.setPointDirection((int)(yup.getPointDirection()*Math.random()*7)-3);
     }
   }
 class Star
@@ -75,15 +76,15 @@ class SpaceShip extends Floater
     xCorners[1] = -8;
     yCorners[1] = 10;
     //top point
-    xCorners[2] = -8;
-    yCorners[2] = -10;
-    //the part that goes in 
-    xCorners[3] = -4;
-    yCorners[3] = 0;
+    xCorners[3] = -8;
+    yCorners[3] = -10;
+    //innner
+    xCorners[2] = -4;
+    yCorners[2] = 0;
 
     myCenterX=250;
     myCenterY=250;
-    myPointDirection = 248;
+    myPointDirection = 0;
     myDirectionX = 0;
     myDirectionY = 0;
     myColor = 255;
@@ -102,7 +103,7 @@ class SpaceShip extends Floater
 
 class Asteroid extends Floater
 {
-  private double rotSpeed;
+  private int rotSpeed;
   public void setX(int x){myCenterX=x;};
   public int getX(){return (int)myCenterX;}   
   public void setY(int y){myCenterY=y;}   
@@ -119,25 +120,25 @@ class Asteroid extends Floater
     corners = 6;
     xCorners = new int[corners];
     yCorners = new int[corners];
-    xCorners[0] = -2;
-    yCorners[0] = -5;
-    xCorners[1] = 5;
-    yCorners[1] = -3;
-    xCorners[2] = 2;
-    yCorners[2] = 2;
-    xCorners[3] = -4;
-    yCorners[3] = 6;                                                                                                                                                                              
-    xCorners[4] = -7;
-    yCorners[4] = 3;
-    xCorners[5] = -5;
-    yCorners[5] = -2;
+    xCorners[0] = -4;
+    yCorners[0] = -10;
+    xCorners[1] = 10;
+    yCorners[1] = -6;
+    xCorners[2] = 4;
+    yCorners[2] = 4;
+    xCorners[3] = -8;
+    yCorners[3] = 12;                                                                                                                                                                              
+    xCorners[4] = -14;
+    yCorners[4] = 6;
+    xCorners[5] = -10;
+    yCorners[5] = -4;
     myCenterX=(int)(Math.random()*500);
     myCenterY=(int)(Math.random()*500);
     myPointDirection = 0;
     myDirectionX = (Math.random()*8)-4;
     myDirectionY = (Math.random()*8)-4;
     myColor = color(160,160,160);
-    rotSpeed = Math.random()*2;
+    rotSpeed =(int) (Math.random()*7)-3;
   }
   public void show()
   {
@@ -146,7 +147,7 @@ class Asteroid extends Floater
   }
   public void move()
   {                                                                                                                                                                    
-    rotate ((int)rotSpeed);
+    rotate (rotSpeed);
     super.move();
   }
 
