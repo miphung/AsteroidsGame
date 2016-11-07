@@ -1,6 +1,6 @@
 SpaceShip yup = new SpaceShip();
 Star sky[] = new Star[200];
-Asteroid ast[] = new Asteroid[10];
+ArrayList <Asteroid> ast = new ArrayList <Asteroid>();
 public void setup() 
 {
   size(500,500);
@@ -8,9 +8,10 @@ public void setup()
   {
     sky[i] = new Star();
   }
-  for(int i =0; i<ast.length; i++)
+  for(int i =0; i<10; i++)
   {
-    ast[i] = new Asteroid();
+    ast.add(new Asteroid());
+    
   }
 }
 public void draw() 
@@ -21,7 +22,7 @@ public void draw()
   yup.show();
   yup.move();
 
-  for(int i = 0; i < ast.length; i++)
+  for(int i = 0; i < ast.size; i++)
   {
     ast[i].show();
     ast[i].move();
