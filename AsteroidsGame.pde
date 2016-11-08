@@ -22,10 +22,10 @@ public void draw()
   yup.show();
   yup.move();
 
-  for(int i = 0; i < ast.size; i++)
+  for(int i = 0; i < ast.size(); i++)
   {
-    ast[i].show();
-    ast[i].move();
+    ast.get(i).show();
+    ast.get(i).move();
 
   }
 
