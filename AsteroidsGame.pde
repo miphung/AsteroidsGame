@@ -11,7 +11,6 @@ public void setup()
   for(int i =0; i<10; i++)
   {
     ast.add(new Asteroid());
-    
   }
 }
 public void draw() 
@@ -26,6 +25,11 @@ public void draw()
   {
     ast.get(i).show();
     ast.get(i).move();
+    if (dist(yup.getX(), yup.getY(), ast.get(i).getX(), ast.get(i).getY()) <20)
+    {
+      ast.remove(i);
+      i--;
+    }
 
   }
 
@@ -154,6 +158,30 @@ class Asteroid extends Floater
 
 
 } 
+class Bullet extends Floater
+{
+  public void setX(int x){myCenterX=x;};
+  public int getX(){return (int)myCenterX;}   
+  public void setY(int y){myCenterY=y;}   
+  public int getY(){return (int)myCenterY;}   
+  public void setDirectionX(double x){myDirectionX = x;}
+  public double getDirectionX(){return myDirectionX;}   
+  public void setDirectionY(double y){myDirectionY = y;}   
+  public double getDirectionY(){return myDirectionY;}   
+  public void setPointDirection(int degrees){myPointDirection=degrees;}   
+  public double getPointDirection(){return myPointDirection;} 
+  corners = 4;
+  xCorners = new int[corners];
+  yCorners = new int[corners];
+  xCorners[0]=3;
+  yCorners[0]=2;
+  xCorners[1]=;
+  yCorners[1]=;
+  xCorners[2]=;
+  yCorners[2]=;
+  xCorners[3]=;
+  yCorners[3]=;
+}
 
 abstract class Floater //Do NOT modify the Floater class! Make changes in the SpaceShip class 
 {   
