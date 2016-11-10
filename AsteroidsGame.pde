@@ -1,6 +1,7 @@
 SpaceShip yup = new SpaceShip();
 Star sky[] = new Star[200];
 ArrayList <Asteroid> ast = new ArrayList <Asteroid>();
+Bullet pew = new Bullet();
 public void setup() 
 {
   size(500,500);
@@ -50,6 +51,8 @@ public void draw()
       yup.setDirectionY (0);
       yup.setPointDirection((int)(yup.getPointDirection()*Math.random()*7)-3);
     }
+    if (key == 'w')
+
   }
 class Star
 {
@@ -173,14 +176,16 @@ class Bullet extends Floater
   corners = 4;
   xCorners = new int[corners];
   yCorners = new int[corners];
-  xCorners[0]=3;
-  yCorners[0]=2;
-  xCorners[1]=;
-  yCorners[1]=;
-  xCorners[2]=;
-  yCorners[2]=;
-  xCorners[3]=;
-  yCorners[3]=;
+  xCorners[0]=2;
+  yCorners[0]=0;
+  xCorners[1]=1;
+  yCorners[1]=1;
+  xCorners[2]=-1;
+  yCorners[2]=1;
+  xCorners[3]=-2;
+  yCorners[3]=0;
+  xCorners[4]=-1;
+  yCorners[4]=-1;
 }
 
 abstract class Floater //Do NOT modify the Floater class! Make changes in the SpaceShip class 
