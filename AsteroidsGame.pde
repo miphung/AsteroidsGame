@@ -173,19 +173,24 @@ class Bullet extends Floater
   public double getDirectionY(){return myDirectionY;}   
   public void setPointDirection(int degrees){myPointDirection=degrees;}   
   public double getPointDirection(){return myPointDirection;} 
-  corners = 4;
-  xCorners = new int[corners];
-  yCorners = new int[corners];
-  xCorners[0]=2;
-  yCorners[0]=0;
-  xCorners[1]=1;
-  yCorners[1]=1;
-  xCorners[2]=-1;
-  yCorners[2]=1;
-  xCorners[3]=-2;
-  yCorners[3]=0;
-  xCorners[4]=-1;
-  yCorners[4]=-1;
+
+  public Bullet(SpaceShip)
+  {
+    myCenterX = SpaceShip.getX();
+    myCenterY = SpaceShip.getY();
+    myPointDirection = SpaceShip.getPointDirection();
+    myDirectionY= SpaceShip.getDirectionY();
+    myDirectionX = SpaceShip.getDirectionX();
+  }
+  public void show()
+  {
+
+  }
+  public void move()
+  {
+    myCenterX += myDirectionX;    
+    myCenterY += myDirectionY;     
+  }
 }
 
 abstract class Floater //Do NOT modify the Floater class! Make changes in the SpaceShip class 
