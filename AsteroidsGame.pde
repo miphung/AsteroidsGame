@@ -52,7 +52,7 @@ public void draw()
       yup.setPointDirection((int)(yup.getPointDirection()*Math.random()*7)-3);
     }
   }
-  
+
 class Star
 {
   private int myX , myY;
@@ -175,13 +175,14 @@ class Bullet extends Floater
   public double getPointDirection(){return myPointDirection;} 
 
 
-  public Bullet(SpaceShip)
+  public Bullet(SpaceShip theShip)
   {
     myCenterX = SpaceShip.getX();
     myCenterY = SpaceShip.getY();
     myPointDirection = SpaceShip.getPointDirection();
-    myDirectionY= SpaceShip.getDirectionY();
-    myDirectionX = SpaceShip.getDirectionX();
+    double dRadians = myPointDirection*(Math.PI/180);
+    myDirectionY = 5 * Math.sin(dRadians) + SpaceShip.getDirectionY();
+    myDirectionX = 5 * Math.cos(dRadians) + SpaceShip.getDirectionX();
   }
   public void show()
   {
