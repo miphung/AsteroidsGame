@@ -1,7 +1,7 @@
 SpaceShip yup = new SpaceShip();
 Star sky[] = new Star[200];
 ArrayList <Asteroid> ast = new ArrayList <Asteroid>();
-//Bullet pew = new Bullet();
+ArrayList <Bullet> pew = new <Bullet>(yup);
 public void setup() 
 {
   size(500,500);
@@ -10,9 +10,10 @@ public void setup()
     sky[i] = new Star();
   }
   for(int i =0; i<10; i++)
-  {
     ast.add(new Asteroid());
-  }
+
+  for(int i=0; i<20; i++)
+    pew.add(new Bullet());
 }
 public void draw() 
 {
@@ -30,8 +31,18 @@ public void draw()
     {
       ast.remove(i);
       i--;
+      //ast.add(new Asteroid());
     }
-
+  }
+  for(int i = 0; i<pew.size(); i++)
+  {
+    pew.get(i).show();
+    pew.get(i).move();
+    if(dist(pew.getX(), pew.getY(), ast.get(i).getX(), ast.get(i).getY())<20)
+    {
+      ast.remove(i);
+      i--;
+    }
   }
 
 }
@@ -51,6 +62,11 @@ public void draw()
       yup.setDirectionY (0);
       yup.setPointDirection((int)(yup.getPointDirection()*Math.random()*7)-3);
     }
+    if (key == 'w')
+      {
+        pew.show();
+        pew.move();
+      }
   }
 
 class Star
@@ -160,41 +176,7 @@ class Asteroid extends Floater
 
 
 } 
-/*
-class Bullet extends Floater
-{
-  public void setX(int x){myCenterX=x;};
-  public int getX(){return (int)myCenterX;}   
-  public void setY(int y){myCenterY=y;}   
-  public int getY(){return (int)myCenterY;}   
-  public void setDirectionX(double x){myDirectionX = x;}
-  public double getDirectionX(){return myDirectionX;}   
-  public void setDirectionY(double y){myDirectionY = y;}   
-  public double getDirectionY(){return myDirectionY;}   
-  public void setPointDirection(int degrees){myPointDirection=degrees;}   
-  public double getPointDirection(){return myPointDirection;} 
 
-
-  public Bullet(SpaceShip theShip)
-  {
-    myCenterX = SpaceShip.getX();
-    myCenterY = SpaceShip.getY();
-    myPointDirection = SpaceShip.getPointDirection();
-    double dRadians = myPointDirection*(Math.PI/180);
-    myDirectionY = 5 * Math.sin(dRadians) + SpaceShip.getDirectionY();
-    myDirectionX = 5 * Math.cos(dRadians) + SpaceShip.getDirectionX();
-  }
-  public void show()
-  {
-
-  }
-  public void move()
-  {
-    myCenterX += myDirectionX;    
-    myCenterY += myDirectionY;     
-  }
-}
-*/ 
 
 abstract class Floater //Do NOT modify the Floater class! Make changes in the SpaceShip class 
 {   
