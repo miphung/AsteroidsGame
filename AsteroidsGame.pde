@@ -1,7 +1,7 @@
 SpaceShip yup = new SpaceShip();
 Star sky[] = new Star[200];
 ArrayList <Asteroid> ast = new ArrayList <Asteroid>();
-ArrayList <Bullet> pew = new <Bullet>(yup);
+ArrayList <Bullet> pew = new ArrayList <Bullet>();
 public void setup() 
 {
   size(500,500);
@@ -11,9 +11,6 @@ public void setup()
   }
   for(int i =0; i<10; i++)
     ast.add(new Asteroid());
-
-  for(int i=0; i<20; i++)
-    pew.add(new Bullet());
 }
 public void draw() 
 {
@@ -23,26 +20,20 @@ public void draw()
   yup.show();
   yup.move();
 
-  for(int i = 0; i < ast.size(); i++)
+  for(int i = 0; i<ast.size(); i++)
   {
     ast.get(i).show();
     ast.get(i).move();
-    if (dist(yup.getX(), yup.getY(), ast.get(i).getX(), ast.get(i).getY()) <20)
-    {
-      ast.remove(i);
-      i--;
-      //ast.add(new Asteroid());
-    }
   }
   for(int i = 0; i<pew.size(); i++)
   {
     pew.get(i).show();
     pew.get(i).move();
-    if(dist(pew.getX(), pew.getY(), ast.get(i).getX(), ast.get(i).getY())<20)
-    {
-      ast.remove(i);
-      i--;
-    }
+    // if(dist(pew.get(i).getX(), pew.get(i).getY(), ast.get(i).getX(), ast.get(i).getY())<20)
+    // {
+    //   ast.remove(i);
+    //   i--;
+    // }
   }
 
 }
@@ -64,8 +55,7 @@ public void draw()
     }
     if (key == 'w')
       {
-        pew.show();
-        pew.move();
+        pew.add(new Bullet(yup));
       }
   }
 
@@ -173,8 +163,6 @@ class Asteroid extends Floater
     rotate (rotSpeed);
     super.move();
   }
-
-
 } 
 
 
