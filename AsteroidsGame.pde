@@ -2,6 +2,8 @@ SpaceShip yup = new SpaceShip();
 Star sky[] = new Star[200];
 ArrayList <Asteroid> ast = new ArrayList <Asteroid>();
 ArrayList <Bullet> pew = new ArrayList <Bullet>();
+boolean check = true;
+int lives = 5; 
 public void setup() 
 {
   size(500,500);
@@ -20,44 +22,49 @@ public void draw()
   yup.show();
   yup.move();
 
-  for(int i = 0; i<ast.size(); i++)
+  for(int j = 0; j<ast.size(); j++)
   {
-    ast.get(i).show();
-    ast.get(i).move();
-  }
-  for(int i = 0; i<pew.size(); i++)
-  {
-    pew.get(i).show();
-    pew.get(i).move();
-    // if(dist(pew.get(i).getX(), pew.get(i).getY(), ast.get(i).getX(), ast.get(i).getY())<20)
-    // {
-    //   ast.remove(i);
-    //   i--;
-    // }
-  }
-
-}
-  public void keyPressed()
-  {
-    if (key == 'a')
-      yup.rotate (-10);
-    if (key == 'd')
-      yup.rotate (10);
-    if (key == 's')
-      yup.accelerate(0.1);
-    if (key == 'q')
-    {
-      yup.setX((int)(Math.random()*500));
-      yup.setY((int)(Math.random()*500));
-      yup.setDirectionX (0);
-      yup.setDirectionY (0);
-      yup.setPointDirection((int)(yup.getPointDirection()*Math.random()*7)-3);
-    }
-    if (key == 'w')
+    ast.get(j).show();
+    ast.get(j).move();
+    for(int i = 0; i<pew.size(); i++)
       {
-        pew.add(new Bullet(yup));
+        pew.get(i).show();
+        pew.get(i).move();
+        if(dist(pew.get(i).getX(), pew.get(i).getY(), ast.get(j).getX(), ast.get(j).getY())<20)
+        {
+          ast.remove(j);
+          pew.remove(i);
+           i--;
+        }
       }
   }
+  textSize(20,20);
+  fill(0,247,255);
+  text("lives : " + lives, 5, 20);
+
+}
+
+public void keyPressed()
+{
+  if (key == 'a')
+    yup.rotate (-10);
+  if (key == 'd')
+    yup.rotate (10);
+  if (key == 's')
+    yup.accelerate(0.1);
+  if (key == 'q')
+  {
+    yup.setX((int)(Math.random()*500));
+    yup.setY((int)(Math.random()*500));
+    yup.setDirectionX (0);
+    yup.setDirectionY (0);
+    yup.setPointDirection((int)(yup.getPointDirection()*Math.random()*7)-3);
+  }
+  if (key == 'w')
+    {
+      pew.add(new Bullet(yup));
+    }
+}
 
 class Star
 {
