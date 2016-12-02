@@ -54,6 +54,13 @@ public void draw()
       text("GAME OVER", 100,250);
       //ast.get(j).remove();
     }
+
+    if (ast.size() == 0)
+    {
+      background(255,250,205);
+      fill(255);
+      text("YOU WIN!!!", 100, 250);
+    }
   }
 }
 
