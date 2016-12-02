@@ -4,6 +4,7 @@ ArrayList <Asteroid> ast = new ArrayList <Asteroid>();
 ArrayList <Bullet> pew = new ArrayList <Bullet>();
 boolean check = true;
 int lives = 5; 
+
 public void setup() 
 {
   size(500,500);
@@ -18,7 +19,7 @@ public void draw()
 {
   background( 255,182,193);
     for (int i = 0; i < sky.length; i++)
-    sky[i].show();
+      sky[i].show();
   yup.show();
   yup.move();
 
@@ -37,11 +38,23 @@ public void draw()
            i--;
         }
       }
-  }
-  textSize(20,20);
-  fill(0,247,255);
-  text("lives : " + lives, 5, 20);
 
+    if (dist(yup.getX(), yup.getY(), ast.get(j).getX(), ast.get(j).getY())<35)
+      lives--;
+
+    textSize(20.0);
+    fill(0,247,255);
+    text("lives : " + lives, 5, 20);
+
+    if (lives < 0)
+    {
+      background(255);
+      textSize(50.0);
+      fill(160,160,160);
+      text("GAME OVER", 100,250);
+      //ast.get(j).remove();
+    }
+  }
 }
 
 public void keyPressed()
